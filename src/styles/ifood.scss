@@ -1,0 +1,95 @@
+// Auth
+
+.ifood-logo {
+  width: 3rem;
+  margin: 0 auto;
+}
+
+.ifood-box-auth {
+  border: solid 2px red !important;
+}
+
+.ifood-title {
+  font-size: 2rem;
+}
+
+// Sidebar 
+
+.userFigure {
+  margin: 0 auto;
+  width: 6rem;
+  height: 6rem;
+}
+
+// Tables 
+
+.text-red-700 {
+  color: #991B1B;
+}
+
+.text-amber-500 {
+  color: #D97706;
+}
+
+.text-emerald-700 {
+  color: #047857;
+}
+
+.description {
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Quotes 
+
+.blockquote {
+  font-size: 1.4em;
+  width: 100%;
+  margin: 50px auto;
+  font-family: Open Sans;
+  font-style: italic;
+  color: #333333;
+  padding: 1.2em 30px 1.2em 75px;
+  border-left: 8px solid #DC2626;
+  line-height: 1.6;
+  position: relative;
+  background: #f1f1f1;
+}
+
+.blockquote::before {
+  font-family: Arial;
+  content: "\201C";
+  color: #DC2626;
+  font-size: 4em;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+}
+
+.blockquote::after {
+  content: '';
+}
+
+.blockquote span {
+  display: block;
+  color: #991B1B;
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+// Account 
+
+@media (max-width: 640px) {
+  .userFigure {
+    img {
+      max-width: 85%;
+    }
+  }
+
+  .text-nome-restaurante {
+    display: none !important;
+  }
+}
