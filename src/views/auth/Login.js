@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router";
 
 // Services 
 
@@ -27,7 +28,6 @@ export default function Login() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [message, setMessage] = useState({})
 
   const handleChangeName = (e) => {
     setName(e.target.value)
@@ -42,15 +42,17 @@ export default function Login() {
   }
 
   const handleLoginSubmit = (e) => {
-
     e.preventDefault()
 
     if (!email || !password) {
-      setMessage({ error: "Preencha email e senha" })
+      return
     }
 
     AuthService.login(email, password)
-      .then(data => console.log(data))
+      .then(data => {
+        localStorage.setItem('ifood:token', data.token)
+        console.log(data)
+      })
       .catch(err => console.log(err))
   }
 
@@ -139,7 +141,7 @@ export default function Login() {
     e.preventDefault()
 
     if (!name || !email || !password) {
-      setMessage({ error: "Preencha nome, email e senha" })
+      return
     }
 
     const cnpj = "23.591.658/0001-10"
@@ -157,6 +159,8 @@ export default function Login() {
       number: "988653245"
     }
 
+    console.log(`Nome: ${name}\nEmail: ${email}\nSenha:${password}`)
+
     AuthService.register(name, email, password, cnpj, address, phones)
       .then(data => console.log(data))
       .catch(err => console.log(err))
@@ -172,6 +176,7 @@ export default function Login() {
       </div>
 
       <form onSubmit={handleRegisterSubmit}>
+
         <div className="relative w-full mb-3">
           <label
             className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -183,6 +188,7 @@ export default function Login() {
             type="text"
             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
             placeholder="Nome"
+            onChange={handleChangeName}
           />
         </div>
 
@@ -197,6 +203,7 @@ export default function Login() {
             type="email"
             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
             placeholder="Email"
+            onChange={handleChangeEmail}
           />
         </div>
 
@@ -211,8 +218,19 @@ export default function Login() {
             type="password"
             className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
             placeholder="Senha"
+            onChange={e => setPassword(e.target.value)}
           />
         </div>
+
+        <div className="text-center mt-6">
+          <button
+            className="border-2 border-0 bg-red-600 text-white active:bg-blueGray-100 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+            type="submit"
+          >
+            Cadastrar
+          </button>
+        </div>
+
         <div>
           <label className="inline-flex items-center cursor-pointer">
             <input
@@ -224,14 +242,6 @@ export default function Login() {
               Concordo com os termos de Política de Privacidade
             </span>
           </label>
-        </div>
-        <div className="text-center mt-6">
-          <button
-            className="border-2 border-0 bg-red-600 text-white active:bg-blueGray-100 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-            type="submit"
-          >
-            Cadastrar
-          </button>
         </div>
       </form>
       <a

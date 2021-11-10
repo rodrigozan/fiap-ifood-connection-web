@@ -5,7 +5,13 @@ const API_URL = "http://localhost:3500/";
 class AuthService {
   login(email, password, token) {
     token = localStorage.getItem('ifood:token')
-    const config = { headers: { 'Authorization': `Bearer ${token}` } }
+    const config = {
+      headers:
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }
     return axios
       .post(API_URL + "signin", {
         email,
