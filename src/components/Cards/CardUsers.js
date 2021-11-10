@@ -3,6 +3,8 @@ import React from "react";
 // components
 
 export default function CardUsers() {
+  const user = JSON.parse(localStorage.getItem('ifood:user'))
+  console.log(user)
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -29,12 +31,12 @@ export default function CardUsers() {
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                     htmlFor="grid-password"
                   >
-                    Username
+                    Restaurante
                   </label>
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="meu.username"
+                    defaultValue={user.nome}
                   />
                 </div>
               </div>
@@ -49,11 +51,11 @@ export default function CardUsers() {
                   <input
                     type="email"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="meuemail@examplo.com.br"
+                    defaultValue={user.email}
                   />
                 </div>
               </div>
-              <div className="w-full lg:w-6/12 px-4">
+              <div className="w-full px-4">
                 <div className="relative w-full mb-3">
                   <label
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -64,22 +66,7 @@ export default function CardUsers() {
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="Meu nome"
-                  />
-                </div>
-              </div>
-              <div className="w-full lg:w-6/12 px-4">
-                <div className="relative w-full mb-3">
-                  <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Sobrenome
-                  </label>
-                  <input
-                    type="text"
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="Sobrenome"
+                    defaultValue={user.nome}
                   />
                 </div>
               </div>
@@ -102,7 +89,7 @@ export default function CardUsers() {
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue=""
+                    defaultValue={user.endereco.street + ', nº ' + user.endereco.number + ', ' + user.endereco.neighborhood}
                   />
                 </div>
               </div>
@@ -117,7 +104,7 @@ export default function CardUsers() {
                   <input
                     type="email"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="São Paulo"
+                    defaultValue={user.endereco.city}
                   />
                 </div>
               </div>
@@ -132,7 +119,7 @@ export default function CardUsers() {
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="Brasil"
+                    defaultValue={user.endereco.country}
                   />
                 </div>
               </div>
@@ -147,7 +134,7 @@ export default function CardUsers() {
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="CEP"
+                    defaultValue={user.endereco.cep}
                   />
                 </div>
               </div>

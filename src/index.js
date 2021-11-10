@@ -16,12 +16,17 @@ import "assets/styles/tailwind.css";
 import Admin from "layouts/Admin.js";
 import Auth from "layouts/Auth.js";
 
+const token = localStorage.getItem('ifood:token')
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" component={Admin} />
-      <Route path="/auth/login" component={Auth} />
-      <Redirect from="*" to="/auth/login" />
+      <Route path="/auth/login">
+        {token ? <Redirect to="/admin" /> : <Auth />}
+      </Route>
+      <Route path="/admin">
+        {!token ? <Redirect to="/auth/login" /> : <Admin />}
+      </Route>
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

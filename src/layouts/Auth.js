@@ -8,7 +8,7 @@ import FooterSmall from "components/Footers/FooterSmall.js";
 
 // views
 
-import Login from "views/auth/Login.js";
+import AuthView from "../views/auth/Auth";
 
 export default function Auth() {
   return (
@@ -21,7 +21,7 @@ export default function Auth() {
           ></div>
           <>
             <Switch>
-              <Route path="/auth/login" exact component={Login} />
+              <Route path="/auth/login" exact component={AuthView} />
               <Redirect from="/login" to="/auth/login" />
               <Redirect from="/register" to="/auth/login" />
             </Switch>
