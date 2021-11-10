@@ -19,14 +19,18 @@ export default function Auth() {
           <div
             className="absolute top-0 w-full h-full bg-white bg-no-repeat bg-full"
           ></div>
-          <Switch>
-            <Route path="/auth/login" exact component={Login} />
-            <Redirect from="/login" to="/auth/login" />
-            <Redirect from="/register" to="/auth/login" />
-          </Switch>
-          <FooterSmall absolute />
+          <>
+            <Switch>
+              <Route path="/auth/login" exact component={Login} />
+              <Redirect from="/login" to="/auth/login" />
+              <Redirect from="/register" to="/auth/login" />
+            </Switch>
+            <FooterSmall absolute />
+          </>
         </section>
       </main>
     </>
+
   );
+
 }

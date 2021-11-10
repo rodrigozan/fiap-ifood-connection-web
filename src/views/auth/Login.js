@@ -52,6 +52,10 @@ export default function Login() {
       .then(data => {
         localStorage.setItem('ifood:token', data.token)
         console.log(data)
+        const token = localStorage.getItem('ifood:token')
+        if (token) {
+          return <Redirect to="/admin/produtos" />
+        }
       })
       .catch(err => console.log(err))
   }
