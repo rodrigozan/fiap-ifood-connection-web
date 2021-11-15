@@ -15,6 +15,8 @@ export default function ProductDetails() {
             name="Nome do Produto"
             price="0.00"
             description="Descrição do Produto"
+            message="editar"
+            msgSucess="atualizado"
           />
         </div>
       </div>

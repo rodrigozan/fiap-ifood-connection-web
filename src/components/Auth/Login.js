@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import bcrypt from 'bcrypt';
 
 import AuthService from '../../services/Auth/AuthService'
 
@@ -12,23 +11,20 @@ const Login = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const bcPassword = bcrypt.compareSync(passwordRef.current.value, hash);
+
     const data = {
       email: emailRef.current.value,
-      password: bcPassword,
+      password: passwordRef.current.value,
     };
 
-    AuthService.register(data.email, data.password)
+    let getToken = localStorage.getItem('ifood:token')
+    console.log(getToken)
+
+    AuthService.login(data.email, data.password, getToken)
       .then(user => {
         console.log(user)
-        let getToken = localStorage.getItem('ifood:token')
-        if (getToken) {
-          return
-        }
         const token = localStorage.setItem('ifood:token', user.data.token)
         const setUser = localStorage.setItem('ifood:user', JSON.stringify(user.data))
-        console.log(`Token: ${localStorage.getItem('ifood:token')}`)
-        console.log(`User: ${localStorage.getItem('ifood:user')}`)
         window.location.href = "/admin/produtos"
       })
       .catch(err => console.log(err))

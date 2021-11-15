@@ -3,8 +3,10 @@ import React, { useState } from "react";
 // components
 
 import CardProductSingle from "components/Cards/CardProductSingle.js";
+import api from '../../services/ifoodApi'
 
 export default function ProductCreate() {
+
   return (
     <>
       <div className="flex flex-wrap mt-4">
@@ -15,6 +17,8 @@ export default function ProductCreate() {
             name="Nome do Produto"
             price="0.00"
             description="Descrição do Produto"
+            message="cadastrar"
+            msgSucess="cadastrado"
           />
         </div>
       </div>

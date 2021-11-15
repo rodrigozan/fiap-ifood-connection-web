@@ -4,7 +4,13 @@ const Quotes = () => {
   return (
     <div class="blockquote-wrapper">
       <blockquote class="blockquote">
-        Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while. That's because they were able to connect experiences they've had and synthesize new things.
+        Analisar tipos de comida mais vendidas por região.
+      </blockquote>
+      <blockquote class="blockquote">
+        Se o cliente estiver relativamente próximo ao restaurante, poderia oferecer entrega grátis, ou uma entrega de até R$ 2,00 (dois reais) para chamar a atenção.
+      </blockquote>
+      <blockquote class="blockquote">
+        Analisar tipos de comida que são procuradas (termos de busca) e não são encontradas (análise de demandas).
       </blockquote>
     </div>
   )
